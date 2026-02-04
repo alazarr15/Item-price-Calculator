@@ -84,6 +84,3 @@ function Clear(){
 }
 
 
-function RemoveItem(selectedItem){
-    itemArray.splice(selectedItem);
-}
