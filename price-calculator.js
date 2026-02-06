@@ -113,7 +113,12 @@ function Clear(){
     if(container){
         container.innerHTML = "";
     }
+      for (let key in counts) {
+        delete counts[key]; // remove each key
+    }
     console.log("Current array:", itemArray);
+    console.log(`counts after clear: ${counts}`);
+
 }
 
 
