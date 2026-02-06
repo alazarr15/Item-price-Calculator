@@ -81,6 +81,9 @@ function enterItem() {
 
 function calculateTotal(){
     let price = parseFloat(document.getElementById("itemPrice").value);
+    if(!price){
+        alert("input correct price");
+    }
     let itemChoosen = itemArray.length;
     let totalPrice = itemChoosen * price;
     console.log(`Total Price: ${totalPrice}`);
