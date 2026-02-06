@@ -1,4 +1,5 @@
  let itemArray = []; // persistent array
+ const counts = {};
 
 function enterItem() {
     const selectedItem = parseFloat(document.getElementById("selectedItem").value);
@@ -12,6 +13,8 @@ function enterItem() {
             }
             itemArray.push(selectedItem);
             console.log("Current array:", itemArray);
+
+            count(selectedItem, itemArray)
 
             // Get container
             let container = document.getElementById("itemPlace");
@@ -43,7 +46,7 @@ function enterItem() {
                 if (index !== -1) {
                     itemArray.splice(index, 1); // remove one instance
                     console.log("Current array:", itemArray);
-
+                    count(selectedItem, itemArray);
                     // If this number no longer exists in the array, remove UI
                     if (!itemArray.includes(selectedItem)) {
                         wrapper.remove();
@@ -58,6 +61,7 @@ function enterItem() {
                 plusBtn.onclick = function () {
                     itemArray.push(selectedItem); // add another copy
                     console.log("Current array:", itemArray);
+                    count(selectedItem, itemArray);
                 };
 
                 wrapper.appendChild(minusBtn);
@@ -76,6 +80,18 @@ function enterItem() {
     } else {
         alert("Select number between 1 and 100!");
     }
+}
+
+
+function count(selectedItem, itemArray){
+    counts[selectedItem] = 0;
+    
+            itemArray.forEach(num => {
+                counts[num] = (counts[num] || 0) + 1;
+            })
+
+            console.log(`counts: ${counts[selectedItem]}`);
+
 }
 
 
