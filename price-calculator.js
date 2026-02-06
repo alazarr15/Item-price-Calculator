@@ -90,6 +90,10 @@ function calculateTotal(){
 function Clear(){
     console.log("clear")
     itemArray = [];
+    let container = document.getElementById("itemPlace");
+    if(container){
+        container.innerHTML = "";
+    }
     console.log("Current array:", itemArray);
 }
 
