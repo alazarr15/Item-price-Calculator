@@ -6,6 +6,10 @@ function enterItem() {
     if (typeof selectedItem === 'number' && selectedItem >= 1 && selectedItem <= 100) {
         if (Number.isInteger(selectedItem)) {
             // Add the number to the array
+            if(itemArray.includes(selectedItem)){
+                alert("item is added !!!");
+                return;
+            }
             itemArray.push(selectedItem);
             console.log("Current array:", itemArray);
 
@@ -34,13 +38,19 @@ function enterItem() {
                 minusBtn.textContent = "-";
                 minusBtn.style.marginRight = "5px";
                 minusBtn.onclick = function () {
-                    // Remove one instance of selectedItem from array
-                    const index = itemArray.indexOf(selectedItem);
-                    if (index !== -1) {
-                        itemArray.splice(index, 1); // remove from array
-                        console.log("Current array:", itemArray);
+                const index = itemArray.indexOf(selectedItem);
+
+                if (index !== -1) {
+                    itemArray.splice(index, 1); // remove one instance
+                    console.log("Current array:", itemArray);
+
+                    // If this number no longer exists in the array, remove UI
+                    if (!itemArray.includes(selectedItem)) {
+                        wrapper.remove();
                     }
-                };
+                }
+            };
+
 
                 // "+" button
                 let plusBtn = document.createElement("button");
